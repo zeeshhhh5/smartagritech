@@ -1,0 +1,251 @@
+/* Success Farmers Section */
+#success-farmers {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+}
+
+.success-farmers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0 3rem;
+}
+
+.farmer-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.farmer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.featured-farmer {
+    grid-column: span 2;
+}
+
+.farmer-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.farmer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.farmer-card:hover .farmer-image img {
+    transform: scale(1.05);
+}
+
+.farmer-details {
+    padding: 1.5rem;
+}
+
+.farmer-details h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #2E7D32;
+    font-size: 1.4rem;
+}
+
+.farmer-location, .farmer-specialty {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.farmer-location i, .farmer-specialty i {
+    margin-right: 0.5rem;
+    color: #2E7D32;
+}
+
+.farmer-stats {
+    display: flex;
+    margin: 1.2rem 0;
+    gap: 1rem;
+}
+
+.stat {
+    flex: 1;
+    background-color: #f5f9f5;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2E7D32;
+    margin-bottom: 0.2rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.farmer-quote {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.featured-crop {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin-top: 3rem;
+}
+
+.featured-crop-image {
+    height: 100%;
+    overflow: hidden;
+}
+
+.featured-crop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-crop-content {
+    padding: 2rem;
+}
+
+.featured-crop-content h3 {
+    color: #2E7D32;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+.featured-crop-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.crop-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.crop-stat {
+    text-align: center;
+    background-color: #f5f9f5;
+    padding: 1rem;
+    border-radius: 8px;
+    flex: 1;
+}
+
+/* Responsive styles for success farmers section */
+@media (max-width: 992px) {
+    .featured-farmer {
+        grid-column: span 1;
+    }
+    
+    .featured-crop {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-crop-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .success-farmers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .farmer-stats, .crop-stats {
+        flex-wrap: wrap;
+    }
+    
+    .stat, .crop-stat {
+        flex: 0 0 calc(50% - 0.5rem);
+    }
+}
+
+@media (max-width: 576px) {
+    .farmer-image {
+        height: 180px;
+    }
+    
+    .featured-crop-image {
+        height: 200px;
+    }
+    
+    .farmer-details, .featured-crop-content {
+        padding: 1rem;
+    }
+}
+
+/* Success Stories CTA Section */
+.success-stories-cta {
+    background-color: #f5f9f5;
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    margin-top: 3rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #2E7D32;
+}
+
+.success-stories-cta h3 {
+    color: #2E7D32;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.success-stories-cta p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    color: #555;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    min-width: 200px;
+}
+
+@media (max-width: 576px) {
+    .success-stories-cta {
+        padding: 1.5rem;
+    }
+    
+    .success-stories-cta h3 {
+        font-size: 1.5rem;
+    }
+    
+    .success-stories-cta p {
+        font-size: 1rem;
+    }
+}

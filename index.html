@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Agri Farming</title>
+    <link rel="icon" href="https://img.icons8.com/color/48/000000/farm.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="success-farmers.css">
+    <link rel="stylesheet" href="crop-health-advisor.css">
+    <script src="script.js" defer></script>
+    <script src="farm-management.js" defer></script>
+    <script src="crop-health-advisor.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-seedling" style="color: #2E7D32; font-size: 28px;"></i>
+                    <i class="fas fa-tractor" style="color: #2E7D32; font-size: 24px; margin: 0 8px;"></i>
+                    <h1>Smart Agri Farming</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#weather"><i class="fas fa-cloud-sun"></i> Weather</a></li>
+                    <li><a href="#irrigation"><i class="fas fa-tint"></i> Irrigation</a></li>
+                    <li><a href="#marketplace"><i class="fas fa-store"></i> Marketplace</a></li>
+                    <li><a href="#farm-management"><i class="fas fa-tractor"></i> Farm Management</a></li>
+                    <li><a href="#ai-recommendations"><i class="fas fa-robot"></i> AI Advisor</a></li>
+                    <li><a href="#medicine-chatbot"><i class="fas fa-comment-medical"></i> Crop Health</a></li>
+                    <li><a href="#success-farmers"><i class="fas fa-award"></i> Success Stories</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Smart Solutions for Modern Farming</h1>
+            <p>Leverage technology to optimize your agricultural practices, increase yields, and promote sustainable farming with our AI-powered tools.</p>
+            <div class="hero-buttons">
+                <a href="#weather" class="btn"><i class="fas fa-rocket"></i> Get Started</a>
+                <a href="#about" class="btn btn-outline"><i class="fas fa-info-circle"></i> Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section id="weather" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Real-Time Weather Insights</h2>
+            <div class="weather-container">
+                <div class="weather-form">
+                    <h3><i class="fas fa-search-location"></i> Check Weather</h3>
+                    <p class="section-subtitle">Get accurate weather data for your farm location</p>
+                    <div class="form-group">
+                        <label for="location">Farm Location</label>
+                        <input type="text" id="location" placeholder="Enter city or coordinates" required>
+                    </div>
+                    <button id="get-weather" class="btn btn-lg"><i class="fas fa-cloud-sun"></i> Get Weather</button>
+                </div>
+                <div class="weather-results">
+                    <div id="weather-data" class="weather-data" style="display: none;">
+                        <div class="weather-location">
+                            <h3 id="weather-location">Location Name</h3>
+                            <p id="weather-date">Current Date</p>
+                        </div>
+                        <div class="weather-main">
+                            <div class="weather-icon">
+                                <i id="weather-icon" class="fas fa-cloud-sun fa-4x"></i>
+                            </div>
+                            <div class="weather-temp">
+                                <h2 id="weather-temp">--°C</h2>
+                                <p id="weather-desc">Weather Description</p>
+                            </div>
+                        </div>
+                        <div class="weather-details">
+                            <div class="weather-detail">
+                                <i class="fas fa-temperature-high"></i>
+                                <div>
+                                    <p>Feels Like</p>
+                                    <strong id="weather-feels">--°C</strong>
+                                </div>
+                            </div>
+                            <div class="weather-detail">
+                                <i class="fas fa-tint"></i>
+                                <div>
+                                    <p>Humidity</p>
+                                    <strong id="weather-humidity">--%</strong>
+                                </div>
+                            </div>
+                            <div class="weather-detail">
+                                <i class="fas fa-wind"></i>
+                                <div>
+                                    <p>Wind</p>
+                                    <strong id="weather-wind">-- km/h</strong>
+                                </div>
+                            </div>
+                            <div class="weather-detail">
+                                <i class="fas fa-cloud-rain"></i>
+                                <div>
+                                    <p>Precipitation</p>
+                                    <strong id="weather-precip">-- mm</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weather-farming-impact">
+                            <h4><i class="fas fa-leaf"></i> Farming Impact</h4>
+                            <p id="weather-farming-impact">Weather impact on farming will appear here.</p>
+                        </div>
+                    </div>
+                    <div id="weather-placeholder" class="ai-placeholder">
+                        <i class="fas fa-cloud-sun fa-4x"></i>
+                        <h3>Weather Data</h3>
+                        <p>Enter your farm location to get real-time weather data and farming recommendations.</p>
+                    </div>
+                    <div id="weather-loading" class="loading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Fetching weather data...</p>
+                    </div>
+                    <div id="weather-error" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p id="weather-error-message">Error fetching weather data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Irrigation Section -->
+    <section id="irrigation" class="section">
+        <div class="container">
+            <h2 class="section-title">Smart Irrigation Calculator</h2>
+            <div class="irrigation-container">
+                <div class="irrigation-form">
+                    <h3><i class="fas fa-tint"></i> Calculate Water Needs</h3>
+                    <p class="section-subtitle">Optimize your water usage based on crop and weather conditions</p>
+                    <div class="form-group">
+                        <label for="crop-type">Crop Type</label>
+                        <select id="crop-type" required>
+                            <option value="">Select Crop</option>
+                            <option value="tomato">Tomato</option>
+                            <option value="potato">Potato</option>
+                            <option value="wheat">Wheat</option>
+                            <option value="rice">Rice</option>
+                            <option value="corn">Corn</option>
+                            <option value="soybean">Soybean</option>
+                            <option value="cotton">Cotton</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field-size">Field Size (in acres)</label>
+                        <input type="number" id="field-size" min="0.1" step="0.1" placeholder="Enter field size" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="current-temp">Current Temperature (°C)</label>
+                        <input type="number" id="current-temp" placeholder="Enter temperature" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="humidity">Humidity (%)</label>
+                        <input type="number" id="humidity" min="0" max="100" placeholder="Enter humidity %" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-rain">Last Rainfall (mm)</label>
+                        <input type="number" id="last-rain" min="0" placeholder="Enter rainfall amount" required>
+                    </div>
+                    <button id="calculate-irrigation" class="btn btn-lg"><i class="fas fa-calculator"></i> Calculate</button>
+                </div>
+                <div class="irrigation-results">
+                    <div id="irrigation-data" class="irrigation-data" style="display: none;">
+                        <div class="irrigation-header">
+                            <h3>Water Requirements</h3>
+                            <p id="irrigation-crop-type">Crop Type</p>
+                        </div>
+                        <div class="irrigation-content">
+                            <div class="water-needs" id="water-needs">-- Liters</div>
+                            <p class="text-center">Estimated daily water requirement</p>
+                            
+                            <div class="irrigation-recommendation">
+                                <h4><i class="fas fa-lightbulb"></i> Irrigation Recommendation</h4>
+                                <p id="irrigation-recommendation">Irrigation recommendations will appear here.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="irrigation-placeholder" class="ai-placeholder">
+                        <i class="fas fa-tint fa-4x"></i>
+                        <h3>Irrigation Calculator</h3>
+                        <p>Fill out the form to calculate optimal water requirements for your crops.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Agri Marketplace</h2>
+            <div class="marketplace-tabs">
+                <button class="tab-btn active" data-tab="fruits"><i class="fas fa-apple-alt"></i> Fruits & Produce</button>
+                <button class="tab-btn" data-tab="medicines"><i class="fas fa-prescription-bottle"></i> Agricultural Medicines</button>
+                <button class="tab-btn" data-tab="equipment"><i class="fas fa-tractor"></i> Farming Equipment</button>
+                <button class="tab-btn" data-tab="seeds"><i class="fas fa-seedling"></i> Seeds</button>
+                <button class="tab-btn" data-tab="smart-tech"><i class="fas fa-microchip"></i> Smart Technology</button>
+            </div>
+            
+            <!-- Fruits & Produce Tab -->
+            <div class="tab-content active" id="fruits-tab">
+                <div class="marketplace-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6" alt="Organic Apples">
+                        </div>
+                        <div class="product-info">
+                            <h3>Organic Apples</h3>
+                            <p class="product-price">₹120/kg</p>
+                            <p class="product-description">Fresh, pesticide-free apples from Himachal Pradesh.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-truck"></i> Free delivery</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/delicious-mango-still-life_23-2151542130.jpg?t=st=1741916298~exp=1741919898~hmac=967cef3add5fcfdb9aa687ea739ed7ade63d6e52e19d531d38c88574b6b9074d&w=1380" alt="Premium Mangoes">
+                        </div>
+                        <div class="product-info">
+                            <h3>Alphonso Mangoes</h3>
+                            <p class="product-price">₹350/kg</p>
+                            <p class="product-description">Premium Alphonso mangoes from Ratnagiri, Maharashtra.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.9/5</span>
+                                <span><i class="fas fa-truck"></i> Free delivery</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/strawberry-berry-levitating-white-background_485709-57.jpg?t=st=1741916693~exp=1741920293~hmac=e8823cad808ef73798aefc7225ca038baefaf839d7716e58808d92764313db59&w=900" alt="Fresh Strawberries">
+                        </div>
+                        <div class="product-info">
+                            <h3>Fresh Strawberries</h3>
+                            <p class="product-price">₹180/kg</p>
+                            <p class="product-description">Sweet, juicy strawberries from Mahabaleshwar farms.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-truck"></i> Free delivery</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919" alt="Organic Bananas">
+                        </div>
+                        <div class="product-info">
+                            <h3>Organic Bananas</h3>
+                            <p class="product-price">₹60/dozen</p>
+                            <p class="product-description">Naturally ripened, chemical-free bananas.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.6/5</span>
+                                <span><i class="fas fa-truck"></i> Free delivery</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/view-sweet-delicious-red-grapes_23-2151542130.jpg?t=st=1741916781~exp=1741920381~hmac=320efce55cb948c703f52efb292a67d05ca867bd98a7f03bd3c546f75be4e840&w=740" alt="Organic Grapes">
+                        </div>
+                        <div class="product-info">
+                            <h3>Premium Grapes</h3>
+                            <p class="product-price">₹160/kg</p>
+                            <p class="product-description">Sweet and juicy grapes from Nashik vineyards.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-truck"></i> Free delivery</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/pineapples-ready-sale_23-2151526638.jpg?t=st=1741916828~exp=1741920428~hmac=e92ab222c252f299f4ff737d7036bc5f2008033ca96f225062ce1b9a66019081&w=1380" alt="Fresh Pineapple">
+                        </div>
+                        <div class="product-info">
+                            <h3>Sweet Pineapple</h3>
+                            <p class="product-price">₹85/piece</p>
+                            <p class="product-description">Juicy, ripe pineapples from Kerala farms.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.5/5</span>
+                                <span><i class="fas fa-truck"></i> Free delivery</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/top-view-exotic-papaya-fruit-ready-be-served_23-2148482276.jpg?t=st=1741916984~exp=1741920584~hmac=dfb9017cc7f59d9eb5520fa3b4d7162d6baf00ffa37d82c06dd0564f7e4dfe5e&w=740" alt="Organic Papaya">
+                        </div>
+                        <div class="product-info">
+                            <h3>Organic Papaya</h3>
+                            <p class="product-price">₹70/kg</p>
+                            <p class="product-description">Naturally grown papayas rich in nutrients.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.4/5</span>
+                                <span><i class="fas fa-truck"></i> Free delivery</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/bottom-view-pomegranate-seeds-wooden-bowl-pomegranate-purple-free-place_140725-105256.jpg?t=st=1741916945~exp=1741920545~hmac=8a4b8fd26589e459680ff91fb1fe331ea7c4caa5aa8c304c05fd30f92112a797&w=1380" alt="Organic Pomegranate">
+                        </div>
+                        <div class="product-info">
+                            <h3>Ruby Pomegranate</h3>
+                            <p class="product-price">₹190/kg</p>
+                            <p class="product-description">Premium pomegranates from Maharashtra farms.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.9/5</span>
+                                <span><i class="fas fa-truck"></i> Free delivery</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agricultural Medicines Tab -->
+            <div class="tab-content" id="medicines-tab">
+                <div class="marketplace-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/jar-medicine-drink-with-plastic-spoon_114579-78056.jpg?t=st=1741929905~exp=1741933505~hmac=a504527f8bd157148bcfb4ac9a2dd34b91375ed1a3b0f24b8ef94ed1f38cfd3f&w=1380" alt="Bio Fungicide">
+                        </div>
+                        <div class="product-info">
+                            <h3>Advanced Bio Fungicide</h3>
+                            <p class="product-price">₹850/liter</p>
+                            <p class="product-description">Premium organic fungicide for effective disease control in crops.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.9/5</span>
+                                <span><i class="fas fa-certificate"></i> Organic certified</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/red-medical-ampoule-marble-surface_114579-54686.jpg?t=st=1741930212~exp=1741933812~hmac=aa75280339939e07049ae87430f2ae484d04e2141be0ef6f7033bfbfe66487db&w=1380" alt="Neem Extract">
+                        </div>
+                        <div class="product-info">
+                            <h3>Premium Neem Extract</h3>
+                            <p class="product-price">₹720/liter</p>
+                            <p class="product-description">Natural pest control solution with multiple benefits.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-leaf"></i> 100% Natural</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/transparent-medical-ampoule-marble-table_114579-22034.jpg?t=st=1741930306~exp=1741933906~hmac=5eff5859a306a4662786fcda91f6a110ebb074ea96d5d8179a137e93a7d1970b&w=1380" alt="Growth Booster">
+                        </div>
+                        <div class="product-info">
+                            <h3>Bio Growth Booster</h3>
+                            <p class="product-price">₹950/liter</p>
+                            <p class="product-description">Enhanced plant growth formula with natural hormones.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-seedling"></i> Fast results</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/pharmaceutical-pills-out-plastic-white-container_114579-25672.jpg?t=st=1741929969~exp=1741933569~hmac=4aa361a2463bb494cd6272ab82b906d8a40c2bf4cfb0a5ab44ab2154a7208220&w=1380" alt="Calcium Booster">
+                        </div>
+                        <div class="product-info">
+                            <h3>Calcium Booster Plus</h3>
+                            <p class="product-price">₹580/kg</p>
+                            <p class="product-description">Essential calcium supplement for stronger plant growth.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.6/5</span>
+                                <span><i class="fas fa-check-circle"></i> Lab tested</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/premium-photo/white-container-bunch-various-pills-marble-surface-high-quality-photo_1004054-4569.jpg?w=900" alt="Micronutrient Mix">
+                        </div>
+                        <div class="product-info">
+                            <h3>Complete Micronutrient Mix</h3>
+                            <p class="product-price">₹750/kg</p>
+                            <p class="product-description">Balanced blend of essential micronutrients for optimal plant growth.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-flask"></i> Lab tested</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/premium-photo/medical-bottles-isolated-white_392895-545885.jpg?w=826" alt="Bio Pesticide">
+                        </div>
+                        <div class="product-info">
+                            <h3>Organic Bio Pesticide</h3>
+                            <p class="product-price">₹680/liter</p>
+                            <p class="product-description">Natural pest control solution safe for beneficial insects.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-leaf"></i> Eco-friendly</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/cannabis-oil-bottle-arrangement_23-2148977727.jpg?t=st=1741930739~exp=1741934339~hmac=a33604d20330ac5af5660ecd67e74df965f8933f785b7378869ba3c641a49a57&w=1380" alt="Root Booster">
+                        </div>
+                        <div class="product-info">
+                            <h3>Root Development Booster</h3>
+                            <p class="product-price">₹890/liter</p>
+                            <p class="product-description">Enhances root system development and nutrient absorption.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-seedling"></i> Quick results</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88" alt="Zinc Supplement">
+                        </div>
+                        <div class="product-info">
+                            <h3>Zinc Plus Supplement</h3>
+                            <p class="product-price">₹620/kg</p>
+                            <p class="product-description">Essential zinc supplement for improved crop yield and quality.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.6/5</span>
+                                <span><i class="fas fa-check-circle"></i> Certified</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Farming Equipment Tab -->
+            <div class="tab-content" id="equipment-tab">
+                <div class="marketplace-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/robot-spraying-fertilizer-vegetable-garden_35913-3099.jpg?t=st=1741930831~exp=1741934431~hmac=5048f6f80efd04653652629e82f033c2f42a13033e75785f98f340bf4bf0f1db&w=1480" alt="Smart Irrigation System">
+                        </div>
+                        <div class="product-info">
+                            <h3>Smart Irrigation System</h3>
+                            <p class="product-price">₹28,500</p>
+                            <p class="product-description">IoT-enabled irrigation system with mobile app control.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.9/5</span>
+                                <span><i class="fas fa-tools"></i> 2-year warranty</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/drone-spraying-fertilizer-vegetable-green-plants-agriculture-technology-farm-automation_35913-2603.jpg?t=st=1741930921~exp=1741934521~hmac=90380036ce2288d36143c9c3a658e14bd55db62e18c2aa10700721c72b7def5e&w=1380" alt="Drone Sprayer">
+                        </div>
+                        <div class="product-info">
+                            <h3>Agricultural Drone Sprayer</h3>
+                            <p class="product-price">₹125,000</p>
+                            <p class="product-description">Advanced drone for efficient crop spraying and monitoring.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-drone"></i> Training included</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/premium-photo/soil-moisture-sensor-meter-dr-meter_1004054-4569.jpg?w=900" alt="Soil Analyzer">
+                        </div>
+                        <div class="product-info">
+                            <h3>Smart Soil Analyzer</h3>
+                            <p class="product-price">₹12,800</p>
+                            <p class="product-description">Digital soil testing kit with mobile app integration.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-microchip"></i> High accuracy</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/vintage-landscape-photo_23-2149728827.jpg?t=st=1741931094~exp=1741934694~hmac=c29738002c008feab9a1a5ca2a1f670a45406c2907fe7d531d330fa282df39da&w=740" alt="Weather Station">
+                        </div>
+                        <div class="product-info">
+                            <h3>Mini Weather Station</h3>
+                            <p class="product-price">₹15,500</p>
+                            <p class="product-description">Local weather monitoring system for precise farming.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.6/5</span>
+                                <span><i class="fas fa-cloud-sun"></i> Real-time data</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/agronomist-choosing-new-planter-man-outdoor-ground-shop-agricultural-machinery_1157-43612.jpg?t=st=1741931278~exp=1741934878~hmac=055281ca575f13a5bc8a3d6200dea4a69ff8a1142ef23fe8e1a772c55448385d&w=1380" alt="Smart Seeder">
+                        </div>
+                        <div class="product-info">
+                            <h3>Precision Seeder</h3>
+                            <p class="product-price">₹45,000</p>
+                            <p class="product-description">GPS-guided seeding system for optimal spacing and depth.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-microchip"></i> GPS enabled</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/new-red-agricultural-seeder-close-up-view_627829-12182.jpg?t=st=1741931343~exp=1741934943~hmac=9a6defc242b1c1c9ec1c4cb8525e842a8ac6b93979dbf919d704fda7b37bcbe8&w=1380" alt="Rotavator">
+                        </div>
+                        <div class="product-info">
+                            <h3>Advanced Rotavator</h3>
+                            <p class="product-price">₹85,000</p>
+                            <p class="product-description">Heavy-duty rotavator for efficient soil preparation.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-tools"></i> 3-year warranty</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/premium-photo/tractor-field-against-sky_1048944-11704066.jpg?w=1380" alt="Solar Pump">
+                        </div>
+                        <div class="product-info">
+                            <h3>Solar Water Pump</h3>
+                            <p class="product-price">₹32,500</p>
+                            <p class="product-description">Energy-efficient solar-powered irrigation pump system.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.9/5</span>
+                                <span><i class="fas fa-sun"></i> Solar powered</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/premium-photo/detailed-shot-advanced-weather-station-hightech-farm-predicting-weather-patterns_1300237-2235.jpg?w=1800" alt="Moisture Sensor">
+                        </div>
+                        <div class="product-info">
+                            <h3>Smart Moisture Sensors</h3>
+                            <p class="product-price">₹8,500</p>
+                            <p class="product-description">IoT-enabled soil moisture monitoring system.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-wifi"></i> WiFi enabled</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seeds Tab -->
+            <div class="tab-content" id="seeds-tab">
+                <div class="marketplace-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/top-view-fresh-ripe-tomato-black-peppercorn-background_141793-7782.jpg?t=st=1741931637~exp=1741935237~hmac=c099b43aa63eb4143bd2ac822c14070c4e5ba40ac8a5ccf7e485031087cd133f&w=1380" alt="Tomato Seeds">
+                        </div>
+                        <div class="product-info">
+                            <h3>Premium Tomato Seeds</h3>
+                            <p class="product-price">₹450/100g</p>
+                            <p class="product-description">High-yield hybrid tomato seeds resistant to common diseases.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.9/5</span>
+                                <span><i class="fas fa-certificate"></i> Certified</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/exotic-fruits-pattern_23-2151535677.jpg?t=st=1741931756~exp=1741935356~hmac=f6f04d493b6bd221b4c2da513b12210121484130889aa54312ebe7fe40ff91e8&w=740" alt="Mango Saplings">
+                        </div>
+                        <div class="product-info">
+                            <h3>Alphonso Mango Saplings</h3>
+                            <p class="product-price">₹280/sapling</p>
+                            <p class="product-description">Genuine Alphonso variety grafted saplings, 1-year-old.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-leaf"></i> Grafted</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/top-view-pile-spices_23-2148211132.jpg?t=st=1741931809~exp=1741935409~hmac=68d0ba5dba24237f1b485841243544125298ea139e101985e8bdf5420c2f2716&w=1380" alt="Chili Seeds">
+                        </div>
+                        <div class="product-info">
+                            <h3>Hybrid Chili Seeds</h3>
+                            <p class="product-price">₹850/100g</p>
+                            <p class="product-description">High-yielding hybrid chili seeds with excellent heat tolerance.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-shield-alt"></i> Disease resistant</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/premium-photo/high-angle-view-ice-cream-table_1048944-3793316.jpg?w=740" alt="Papaya Seeds">
+                        </div>
+                        <div class="product-info">
+                            <h3>Red Lady Papaya Seeds</h3>
+                            <p class="product-price">₹1200/100g</p>
+                            <p class="product-description">Taiwan Red Lady 786 variety, high-yielding dwarf papaya.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-dna"></i> Pure strain</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Smart Technology Tab -->
+            <div class="tab-content" id="smart-tech-tab">
+                <div class="marketplace-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/farmer-with-tablet-close-up_23-2148579698.jpg?t=st=1741932076~exp=1741935676~hmac=3cb3b360ac33c64161dfb48eb23fc4a333db8d3472adbecccbb5fbfa6efbd987&w=1380" alt="Farm Management System">
+                        </div>
+                        <div class="product-info">
+                            <h3>Smart Farm Management System</h3>
+                            <p class="product-price">₹45,000</p>
+                            <p class="product-description">Complete IoT solution for farm monitoring and management.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.9/5</span>
+                                <span><i class="fas fa-mobile-alt"></i> App included</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/futuristic-technology-concept_23-2151908083.jpg?t=st=1741931988~exp=1741935588~hmac=a2c1b266a8b556c75e00976845f4dcba146aa7cee96496b932acf029195e652a&w=1800" alt="Crop Monitor">
+                        </div>
+                        <div class="product-info">
+                            <h3>AI Crop Health Monitor</h3>
+                            <p class="product-price">₹28,500</p>
+                            <p class="product-description">AI-powered camera system for early disease detection.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-brain"></i> AI powered</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/agricultural-robots-work-smart-farms_35913-3364.jpg?t=st=1741932282~exp=1741935882~hmac=5ccee4fa752fd369d026d0f13ccd55c86d354b37e67ec54650ef713e8edb4d33&w=1800" alt="Weather Station">
+                        </div>
+                        <div class="product-info">
+                            <h3>Pro Weather Station</h3>
+                            <p class="product-price">₹18,500</p>
+                            <p class="product-description">Professional weather monitoring with forecasting capabilities.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                                <span><i class="fas fa-cloud-sun"></i> 7-day forecast</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.freepik.com/free-photo/smart-robotic-farmers-concept-robot-farmers-agriculture-technology-farm-automation_35913-2324.jpg?t=st=1741932356~exp=1741935956~hmac=179439b03472690ea91d3fd2303cd47e083e51fef26d288b4dcf18ca1c75e61c&w=1380" alt="Automation Hub">
+                        </div>
+                        <div class="product-info">
+                            <h3>Farm Automation Hub</h3>
+                            <p class="product-price">₹35,000</p>
+                            <p class="product-description">Central control system for irrigation, lighting, and monitoring.</p>
+                            <div class="product-meta">
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                                <span><i class="fas fa-network-wired"></i> Smart hub</span>
+                            </div>
+                            <button class="btn btn-sm">Contact Seller</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Farm Management Section -->
+    <section id="farm-management" class="section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-tractor" style="color: #2E7D32; font-size: 36px; margin-right: 15px;"></i>Farm Management</h2>
+            <p class="section-subtitle">Efficiently manage your farm operations</p>
+            
+            <div class="management-grid">
+                <!-- Crop Planning -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Crop Planning</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="plot-name">Plot Name</label>
+                            <input type="text" id="plot-name" placeholder="Enter plot name">
+                        </div>
+                        <div class="form-group">
+                            <label for="crop-selection">Crop</label>
+                            <select id="crop-selection">
+                                <option value="">Select crop</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="rice">Rice</option>
+                                <option value="corn">Corn</option>
+                                <option value="potato">Potato</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="planting-date">Planting Date</label>
+                            <input type="date" id="planting-date">
+                        </div>
+                        <button class="btn" onclick="addCropPlan()">Add to Plan</button>
+                        <div class="list-container">
+                            <h4>Current Plan</h4>
+                            <div id="crop-plan-list" class="scrollable-list"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Inventory Management -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <i class="fas fa-boxes"></i>
+                        <h3>Inventory</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="item-name">Item Name</label>
+                            <input type="text" id="item-name" placeholder="Enter item name">
+                        </div>
+                        <div class="form-group">
+                            <label for="item-category">Category</label>
+                            <select id="item-category">
+                                <option value="">Select Category</option>
+                                <option value="seeds">Seeds</option>
+                                <option value="fertilizers">Fertilizers</option>
+                                <option value="pesticides">Pesticides</option>
+                                <option value="equipment">Equipment</option>
+                                <option value="harvest">Harvest</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-quantity">Quantity</label>
+                            <input type="number" id="item-quantity" min="1" placeholder="Enter quantity">
+                        </div>
+                        <button class="btn" onclick="addInventoryItem()">Add Item</button>
+                        <div class="list-container">
+                            <h4>Current Inventory</h4>
+                            <div id="inventory-list" class="scrollable-list"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Task Management -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Tasks</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="task-name">Task Name</label>
+                            <input type="text" id="task-name" placeholder="Enter task name">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-priority">Priority</label>
+                            <select id="task-priority">
+                                <option value="">Select Priority</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-due">Due Date</label>
+                            <input type="date" id="task-due">
+                        </div>
+                        <button class="btn" onclick="addTask()">Add Task</button>
+                        <div class="list-container">
+                            <h4>Current Tasks</h4>
+                            <div id="task-list" class="scrollable-list"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Yield Tracking -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Yield Tracking</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="yield-crop">Crop</label>
+                            <select id="yield-crop">
+                                <option value="">Select Crop</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="rice">Rice</option>
+                                <option value="corn">Corn</option>
+                                <option value="potato">Potato</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="harvest-date">Harvest Date</label>
+                            <input type="date" id="harvest-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="yield-quantity">Quantity (kg)</label>
+                            <input type="number" id="yield-quantity" min="0.1" step="0.1" placeholder="Enter yield amount">
+                        </div>
+                        <div class="form-group">
+                            <label for="yield-quality">Quality</label>
+                            <select id="yield-quality">
+                                <option value="">Select Quality</option>
+                                <option value="Excellent">Excellent</option>
+                                <option value="Good">Good</option>
+                                <option value="Average">Average</option>
+                                <option value="Poor">Poor</option>
+                            </select>
+                        </div>
+                        <button id="add-yield" class="btn btn-sm">Record Yield</button>
+                        <div class="list-container">
+                            <h4>Yield Records</h4>
+                            <div id="yield-records" class="scrollable-list"></div>
+                        </div>
+                        <div class="analytics-container">
+                            <h4>Yield Analytics</h4>
+                            <div id="yield-analytics" class="analytics-grid"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource Utilization -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <i class="fas fa-water"></i>
+                        <h3>Resource Utilization</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="resource-type">Resource Type</label>
+                            <select id="resource-type">
+                                <option value="">Select Resource</option>
+                                <option value="water">Water</option>
+                                <option value="fertilizer">Fertilizer</option>
+                                <option value="pesticide">Pesticide</option>
+                                <option value="electricity">Electricity</option>
+                                <option value="fuel">Fuel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="usage-date">Usage Date</label>
+                            <input type="date" id="usage-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="resource-quantity">Quantity</label>
+                            <input type="number" id="resource-quantity" min="0.1" step="0.1" placeholder="Enter amount">
+                        </div>
+                        <div class="form-group">
+                            <label for="resource-unit">Unit</label>
+                            <select id="resource-unit">
+                                <option value="">Select Unit</option>
+                                <option value="liters">Liters</option>
+                                <option value="kg">Kilograms</option>
+                                <option value="kWh">kWh</option>
+                                <option value="gallons">Gallons</option>
+                            </select>
+                        </div>
+                        <button id="add-resource" class="btn btn-sm">Record Usage</button>
+                        <div class="list-container">
+                            <h4>Resource Usage Records</h4>
+                            <div id="resource-records" class="scrollable-list"></div>
+                        </div>
+                        <div class="efficiency-container">
+                            <h4>Resource Efficiency</h4>
+                            <div id="resource-efficiency" class="efficiency-grid"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="management-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Finances</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="transaction-type">Type</label>
+                            <select id="transaction-type">
+                                <option value="">Select Type</option>
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transaction-category">Category</label>
+                            <select id="transaction-category">
+                                <option value="">Select Category</option>
+                                <option value="sales">Sales</option>
+                                <option value="supplies">Supplies</option>
+                                <option value="equipment">Equipment</option>
+                                <option value="labor">Labor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transaction-amount">Amount</label>
+                            <input type="number" id="transaction-amount" min="0.01" step="0.01" placeholder="Enter amount">
+                        </div>
+                        <button class="btn" onclick="addTransaction()">Add Transaction</button>
+                        <div class="summary-container">
+                            <h4>Financial Summary</h4>
+                            <div id="financial-summary" class="summary-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- Agri Medicine Chatbot Section -->
+       <section id="medicine-chatbot" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Crop Health Advisor</h2>
+            <div class="chatbot-container">
+                <div class="chatbot-header">
+                    <div class="chatbot-title">
+                        <i class="fas fa-comment-medical"></i>
+                        <span>Medicine Chatbot</span>
+                    </div>
+                    <p>Get expert advice on agricultural medicines and treatments for your crops</p>
+                </div>
+                
+                <div class="chatbot-messages" id="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <p>Hello! I'm your agricultural medicine advisor. How can I help you today?</p>
+                            <p>You can ask me about pest control, disease management, or nutritional supplements for your crops.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chatbot-input">
+                    <div class="quick-responses">
+                        <button class="quick-response-btn" data-query="tomato blight">Tomato Blight</button>
+                        <button class="quick-response-btn" data-query="aphid infestation">Aphid Infestation</button>
+                        <button class="quick-response-btn" data-query="wheat rust">Wheat Rust</button>
+                        <button class="quick-response-btn" data-query="rice blast">Rice Blast</button>
+                        <button class="quick-response-btn" data-query="nutrient deficiency">Nutrient Deficiency</button>
+                    </div>
+                    
+                    <form id="chat-form">
+                        <div class="input-group">
+                            <input type="text" id="chat-input" placeholder="Describe your crop issue..." required>
+                            <button type="submit" class="btn" id="send-message">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Crop Health Image Analysis -->
+            <div class="crop-health-container">
+                <div class="upload-container">
+                    <h3><i class="fas fa-leaf"></i> Image Analysis</h3>
+                    <p class="section-subtitle">Upload an image of your crop for AI-powered health assessment</p>
+                    
+                    <form id="crop-image-upload-form" enctype="multipart/form-data">
+                        <div class="upload-header">
+                            <h3><i class="fas fa-leaf"></i> Crop Health Advisor</h3>
+                            <p>AI-powered crop disease detection and treatment recommendations</p>
+                        </div>
+                        
+                        <div class="upload-content">
+                            <div class="drop-zone" id="drop-zone">
+                                <div class="drop-zone-prompt">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag & drop your crop image here</p>
+                                    <p class="drop-zone-subtext">or</p>
+                                    <button type="button" class="upload-btn" id="upload-btn">
+                                        <i class="fas fa-file-image"></i> Select Image
+                                    </button>
+                                    <button type="button" class="ai-direct-btn" id="ai-direct-btn">
+                                        <i class="fas fa-camera"></i> AI Direct Capture
+                                    </button>
+                                    <input type="file" id="crop-image" name="crop-image" accept="image/*" class="hidden-input">
+                                </div>
+                                <div class="preview-container" id="preview-container">
+                                    <img id="image-preview" class="image-preview">
+                                    <div class="preview-controls">
+                                        <button type="button" id="remove-image-btn" class="remove-image-btn">
+                                            <i class="fas fa-times"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="upload-info">
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h4>AI-Powered Analysis</h4>
+                                        <p>Our advanced AI will automatically identify your crop type and detect any diseases or nutrient deficiencies.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-prescription-bottle-alt"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h4>Treatment Recommendations</h4>
+                                        <p>Get personalized treatment plans and prevention strategies for optimal crop health.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="action-container">
+                                <button type="submit" id="analyze-btn" class="analyze-btn" disabled>
+                                    <i class="fas fa-search"></i> Analyze Image
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="analysis-container">
+                    <div id="analysis-loading" class="analysis-loading">
+                        <i class="fas fa-spinner"></i>
+                        <p>Analyzing your crop image...</p>
+                        <p class="loading-subtext">Our AI is examining leaf patterns, coloration, and visible symptoms</p>
+                    </div>
+                    
+                    <div id="analysis-result-container" class="analysis-result-container">
+                        <div class="analysis-header">
+                            <h3><i class="fas fa-chart-line"></i> Analysis Results</h3>
+                            <p>AI-powered crop health assessment</p>
+                        </div>
+                        
+                        <div class="analysis-content">
+                            <div class="analysis-section">
+                                <h4><i class="fas fa-heartbeat"></i> Health Status</h4>
+                                <div class="analysis-data">
+                                    <div class="data-item">
+                                        <p>Overall Health</p>
+                                        <strong id="health-status" class="health-status">Healthy</strong>
+                                    </div>
+                                    <div class="data-item">
+                                        <p>Confidence</p>
+                                        <strong id="confidence-level">92%</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="analysis-section">
+                                <h4><i class="fas fa-search-plus"></i> Detected Issue</h4>
+                                <div class="data-item" style="width: 100%">
+                                    <p>Issue Type</p>
+                                    <strong id="detected-issue">No issues detected</strong>
+                                </div>
+                                <p id="issue-description" style="margin-top: 1rem; line-height: 1.6;">Your crop appears healthy with no visible signs of disease or pest infestation.</p>
+                            </div>
+                            
+                            <div class="analysis-section">
+                                <h4><i class="fas fa-prescription-bottle-alt"></i> Treatment Recommendations</h4>
+                                <p id="treatment-recommendation" style="line-height: 1.6;">Continue regular maintenance and monitoring.</p>
+                            </div>
+                            
+                            <div class="analysis-section">
+                                <h4><i class="fas fa-shield-alt"></i> Prevention Tips</h4>
+                                <p id="prevention-tips" style="line-height: 1.6;">Maintain proper watering and fertilization schedule. Monitor for early signs of pests or disease.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI Recommendations Section -->
+    <section id="ai-recommendations" class="section">
+        <div class="container">
+            <h2 class="section-title">AI Farming Recommendations</h2>
+            <div class="ai-container">
+                <div class="ai-input">
+                    <h3><i class="fas fa-robot"></i> Get Personalized Advice</h3>
+                    <p class="section-subtitle">Our AI will analyze your farm details and provide customized recommendations</p>
+                    
+                    <div class="form-group">
+                        <label for="farm-location">Farm Location</label>
+                        <input type="text" id="farm-location" placeholder="Enter your farm location">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="soil-type">Soil Type</label>
+                        <select id="soil-type">
+                            <option value="">Select Soil Type</option>
+                            <option value="clay">Clay Soil</option>
+                            <option value="sandy">Sandy Soil</option>
+                            <option value="loamy">Loamy Soil</option>
+                            <option value="silty">Silty Soil</option>
+                            <option value="peaty">Peaty Soil</option>
+                            <option value="chalky">Chalky Soil</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="farm-size">Farm Size (acres)</label>
+                        <input type="number" id="farm-size" min="0.1" step="0.1" placeholder="Enter farm size">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="farming-goal">Primary Farming Goal</label>
+                        <select id="farming-goal">
+                            <option value="">Select Goal</option>
+                            <option value="yield">Maximize Yield</option>
+                            <option value="sustainable">Sustainable Farming</option>
+                            <option value="organic">Organic Certification</option>
+                            <option value="cost">Cost Reduction</option>
+                            <option value="diversification">Crop Diversification</option>
+                        </select>
+                    </div>
+                    
+                    <button id="generate-recommendations" class="btn btn-lg"><i class="fas fa-lightbulb"></i> Generate Recommendations</button>
+                </div>
+                
+                <div class="ai-result">
+                    <div id="ai-recommendation" class="ai-recommendation" style="display: none;">
+                        <div class="ai-recommendation-header">
+                            <h3>Your Personalized Farming Plan</h3>
+                            <p id="ai-farm-details">Farm details will appear here</p>
+                        </div>
+                        <div class="ai-recommendation-body">
+                            <h4><i class="fas fa-check-circle"></i> Recommended Crops</h4>
+                            <ul id="recommended-crops">
+                                <!-- Recommended crops will be inserted here -->
+                            </ul>
+                            
+                            <h4><i class="fas fa-seedling"></i> Farming Practices</h4>
+                            <ul id="farming-practices">
+                                <!-- Farming practices will be inserted here -->
+                            </ul>
+                            
+                            <h4><i class="fas fa-tools"></i> Resource Management</h4>
+                            <ul id="resource-management">
+                                <!-- Resource management tips will be inserted here -->
+                            </ul>
+                        </div>
+                        <div class="ai-recommendation-footer">
+                            <p><i class="fas fa-info-circle"></i> These recommendations are based on your inputs and our AI analysis. Actual results may vary based on specific local conditions.</p>
+                        </div>
+                    </div>
+                    
+                    <div id="ai-placeholder" class="ai-placeholder">
+                        <i class="fas fa-robot fa-4x"></i>
+                        <h3>AI Farming Advisor</h3>
+                        <p>Fill out the form to receive personalized farming recommendations from our AI system.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Farmers Section -->
+    <section id="success-farmers" class="section bg-white">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            <p class="section-subtitle">Meet the farmers who transformed their operations with smart agriculture</p>
+            
+            <div class="success-farmers-grid">
+                <!-- Featured Farmer 1 -->
+                <div class="farmer-card featured-farmer">
+                    <div class="farmer-image">
+                        <img src="https://img.freepik.com/free-photo/community-people-working-together-agriculture-grow-food_23-2151205705.jpg?t=st=1741933192~exp=1741936792~hmac=91b9778076b379899781f78d179dd251a3425810a918f0704ecc9b6077545e70&w=1800" alt="Farmer John Williams">
+                    </div>
+                    <div class="farmer-details">
+                        <h3>John Williams</h3>
+                        <p class="farmer-location"><i class="fas fa-map-marker-alt"></i> Iowa, USA</p>
+                        <p class="farmer-specialty"><i class="fas fa-seedling"></i> Specialty: Corn & Soybeans</p>
+                        <div class="farmer-stats">
+                            <div class="stat">
+                                <span class="stat-value">35%</span>
+                                <span class="stat-label">Yield Increase</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">28%</span>
+                                <span class="stat-label">Water Saved</span>
+                            </div>
+                        </div>
+                        <p class="farmer-quote">"Smart Agri Farming technology helped me transform my traditional corn farming methods. The precision irrigation and disease forecasting have dramatically improved my harvest quality."</p>
+                    </div>
+                </div>
+                
+                <!-- Featured Farmer 2 -->
+                <div class="farmer-card featured-farmer">
+                    <div class="farmer-image">
+                        <img src="https://img.freepik.com/free-photo/portrait-man-practicing-his-profession-celebrate-international-labour-day_23-2151230050.jpg?t=st=1741933378~exp=1741936978~hmac=75b445bb0272675e75c6cc5073313b10b1d41d87504aeb218342e5449506fab3&w=1380" alt="Farmer Miguel Hernandez">
+                    </div>
+                    <div class="farmer-details">
+                        <h3>Miguel Hernandez</h3>
+                        <p class="farmer-location"><i class="fas fa-map-marker-alt"></i> Jalisco, Mexico</p>
+                        <p class="farmer-specialty"><i class="fas fa-seedling"></i> Specialty: Avocados & Citrus</p>
+                        <div class="farmer-stats">
+                            <div class="stat">
+                                <span class="stat-value">48%</span>
+                                <span class="stat-label">Water Saved</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">55%</span>
+                                <span class="stat-label">Quality Improvement</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">70%</span>
+                                <span class="stat-label">Export Growth</span>
+                            </div>
+                        </div>
+                        <p class="farmer-quote">"The smart weather predictions and irrigation scheduling have revolutionized my traditional avocado orchard into a high-efficiency operation. I've reduced pest issues significantly through smart monitoring."</p>
+                    </div>
+                </div>
+                
+                <!-- Regular Farmers Row 1 -->
+                <div class="farmer-card">
+                    <div class="farmer-image">
+                        <img src="https://img.freepik.com/free-photo/portrait-person-eating-watermelon_23-2151553591.jpg?t=st=1741932606~exp=1741936206~hmac=2ee7bbbef34f28385a6a9d242e1b29d83264280ab719bb0295bed632cdc1a7ef&w=740" alt="Farmer Rajesh Patel">
+                    </div>
+                    <div class="farmer-details">
+                        <h3>Rajesh Patel</h3>
+                        <p class="farmer-location"><i class="fas fa-map-marker-alt"></i> Gujarat, India</p>
+                        <p class="farmer-specialty"><i class="fas fa-seedling"></i> Specialty: Tomatoes & Cotton</p>
+                        <div class="farmer-stats">
+                            <div class="stat">
+                                <span class="stat-value">40%</span>
+                                <span class="stat-label">Water Saved</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">25%</span>
+                                <span class="stat-label">Yield Increase</span>
+                            </div>
+                        </div>
+                        <p class="farmer-quote">"The smart irrigation calculator transformed my water usage. With precise recommendations based on real-time weather, I've optimized my irrigation schedule completely."</p>
+                    </div>
+                </div>
+                
+                <div class="farmer-card">
+                    <div class="farmer-image">
+                        <img src="https://img.freepik.com/free-photo/view-woman-working-agricultural-sector-celebrate-labour-day-women_23-2151252034.jpg?t=st=1741932669~exp=1741936269~hmac=699d3685be676a2fbdc6995fe82e5637561a3c2260e94260e04a1dbd1fd57398&w=1800" alt="Farmer Maria Rodriguez">
+                    </div>
+                    <div class="farmer-details">
+                        <h3>Maria Rodriguez</h3>
+                        <p class="farmer-location"><i class="fas fa-map-marker-alt"></i> California, USA</p>
+                        <p class="farmer-specialty"><i class="fas fa-seedling"></i> Specialty: Organic Vegetables</p>
+                        <div class="farmer-stats">
+                            <div class="stat">
+                                <span class="stat-value">42%</span>
+                                <span class="stat-label">Profit Increase</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">65%</span>
+                                <span class="stat-label">Pest Reduction</span>
+                            </div>
+                        </div>
+                        <p class="farmer-quote">"The AI recommendations helped me transition to fully organic practices while maintaining profitability. I've reduced pest issues significantly through smart monitoring."</p>
+                    </div>
+                </div>
+                
+                <div class="farmer-card">
+                    <div class="farmer-image">
+                        <img src="https://img.freepik.com/free-photo/view-woman-working-agricultural-sector-celebrate-labour-day-women_23-2151252089.jpg?t=st=1741932729~exp=1741936329~hmac=03b62b3a62abb72948c01fbdda5efdf4666fbad1620ca94997b1ba5be7b5cd98&w=1800" alt="Farmer Sarah Johnson">
+                    </div>
+                    <div class="farmer-details">
+                        <h3>Sarah Johnson</h3>
+                        <p class="farmer-location"><i class="fas fa-map-marker-alt"></i> Victoria, Australia</p>
+                        <p class="farmer-specialty"><i class="fas fa-seedling"></i> Specialty: Wheat & Barley</p>
+                        <div class="farmer-stats">
+                            <div class="stat">
+                                <span class="stat-value">30%</span>
+                                <span class="stat-label">Cost Reduction</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">22%</span>
+                                <span class="stat-label">Yield Increase</span>
+                            </div>
+                        </div>
+                        <p class="farmer-quote">"The medicine chatbot helped me identify a fungal issue early, saving my entire wheat crop. The marketplace connections have also helped me get better prices for my harvest."</p>
+                    </div>
+                </div>
+                
+                <!-- Regular Farmers Row 2 -->
+                <div class="farmer-card">
+                    <div class="farmer-image">
+                        <img src="https://images.unsplash.com/photo-1520052203542-d3095f1b6cf0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Farmer Chen Wei">
+                    </div>
+                    <div class="farmer-details">
+                        <h3>Chen Wei</h3>
+                        <p class="farmer-location"><i class="fas fa-map-marker-alt"></i> Sichuan, China</p>
+                        <p class="farmer-specialty"><i class="fas fa-seedling"></i> Specialty: Rice & Tea</p>
+                        <div class="farmer-stats">
+                            <div class="stat">
+                                <span class="stat-value">45%</span>
+                                <span class="stat-label">Labor Reduction</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">38%</span>
+                                <span class="stat-label">Profit Increase</span>
+                            </div>
+                        </div>
+                        <p class="farmer-quote">"The smart weather predictions and irrigation scheduling have revolutionized my traditional rice farming methods. I've reduced labor costs while increasing my harvest quality."</p>
+                    </div>
+                </div>
+                
+                <div class="farmer-card">
+                    <div class="farmer-image">
+                        <img src="https://img.freepik.com/free-photo/portrait-indian-man-field_23-2150913330.jpg?t=st=1741932795~exp=1741936395~hmac=7d6536aaf9276e66ac880b5f5ff0e59521be852e85fbf9f66af2100dcd7758c1&w=1380" alt="Farmer Amara Okafor">
+                    </div>
+                    <div class="farmer-details">
+                        <h3>Amara Okafor</h3>
+                        <p class="farmer-location"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+                        <p class="farmer-specialty"><i class="fas fa-seedling"></i> Specialty: Cassava & Yams</p>
+                        <div class="farmer-stats">
+                            <div class="stat">
+                                <span class="stat-value">52%</span>
+                                <span class="stat-label">Yield Increase</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">60%</span>
+                                <span class="stat-label">Pest Reduction</span>
+                            </div>
+                        </div>
+                        <p class="farmer-quote">"The AI recommendations for crop rotation and pest management have transformed my farm. I've doubled my cassava yield and now supply to major markets across the region."</p>
+                    </div>
+                </div>
+                
+                <div class="farmer-card">
+                    <div class="farmer-image">
+                        <img src="https://img.freepik.com/free-photo/front-view-woman-with-bananas_23-2150830532.jpg?t=st=1741932910~exp=1741936510~hmac=e3c26fbf5ef1c3325f82fca23f55e9a201345570e27816d07346658842bac2a6&w=1800" alt="Farmer Emma Larsson">
+                    </div>
+                    <div class="farmer-details">
+                        <h3>Emma Larsson</h3>
+                        <p class="farmer-location"><i class="fas fa-map-marker-alt"></i> Skåne, Sweden</p>
+                        <p class="farmer-specialty"><i class="fas fa-seedling"></i> Specialty: Berries & Greenhouse Vegetables</p>
+                        <div class="farmer-stats">
+                            <div class="stat">
+                                <span class="stat-value">65%</span>
+                                <span class="stat-label">Energy Saved</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">42%</span>
+                                <span class="stat-label">Season Extension</span>
+                            </div>
+                        </div>
+                        <p class="farmer-quote">"The climate control recommendations and energy optimization have transformed my greenhouse operations. I've extended my growing season and reduced energy costs while maintaining organic certification."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="featured-crop">
+                <div class="featured-crop-image">
+                    <img src="https://images.pexels.com/photos/5528986/pexels-photo-5528986.jpeg" alt="Tomato in seeds">
+                </div>
+                <div class="featured-crop-content">
+                    <h3>Success Spotlight: Tomato Farming</h3>
+                    <p>Our farmers have seen remarkable success with tomato cultivation using smart farming techniques. By implementing precision irrigation and AI-based disease detection, tomato yields have increased by an average of 32% while reducing water usage by 40%.</p>
+                    <div class="crop-stats">
+                        <div class="crop-stat">
+                            <span class="stat-value">32%</span>
+                            <span class="stat-label">Yield Increase</span>
+                        </div>
+                        <div class="crop-stat">
+                            <span class="stat-value">40%</span>
+                            <span class="stat-label">Water Saved</span>
+                        </div>
+                        <div class="crop-stat">
+                            <span class="stat-value">45%</span>
+                            <span class="stat-label">Disease Reduction</span>
+                        </div>
+                    </div>
+                    <a href="#marketplace" class="btn btn-accent"><i class="fas fa-seedling"></i> Explore Tomato Seeds</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Smart Agri Farming</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Smart Agri Farming is a comprehensive platform designed to bring modern technology and agricultural science together to help farmers optimize their operations, increase yields, and practice sustainable farming.</p>
+                    
+                    <p>Our mission is to empower farmers with data-driven insights and AI-powered recommendations to make informed decisions about their farming practices.</p>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><i class="fas fa-cloud-sun"></i> <strong>Real-time Weather Data:</strong> Access accurate weather information specific to your farm location.</li>
+                        <li><i class="fas fa-tint"></i> <strong>Smart Irrigation:</strong> Calculate optimal water requirements based on crop type and weather conditions.</li>
+                        <li><i class="fas fa-robot"></i> <strong>AI Recommendations:</strong> Get personalized farming advice based on your specific farm details.</li>
+                        <li><i class="fas fa-comment-medical"></i> <strong>Crop Health Advisor:</strong> Receive expert guidance on agricultural medicines and treatments.</li>
+                        <li><i class="fas fa-store"></i> <strong>Marketplace:</strong> Discover quality agricultural products from trusted suppliers.</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://img.freepik.com/free-photo/two-brown-cattle-grass-field_422131-86.jpg?t=st=1741933494~exp=1741937094~hmac=819441de90e9b9aa89b62d4eee061da6e0da5bf3a69a140cb2d766f3df60d787&w=740" alt="Modern Farming">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Smart Agri Farming. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="farm-management.js"></script>
+    <script src="crop-health-advisor.js"></script>
+</body>
+</html>
